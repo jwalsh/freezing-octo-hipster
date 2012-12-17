@@ -2,6 +2,7 @@
 module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-requirejs');
+  //  grunt.loadNpmTasks('grunt-jenkins');
 
   // Project configuration.
   grunt.initConfig(
@@ -36,16 +37,19 @@ module.exports = function(grunt) {
           dest: 'dist/<%= pkg.name %>.js'
         }
       },
+
       min: {
         dist: {
           src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
           dest: 'dist/<%= pkg.name %>.min.js'
         }
       },
+
       watch: {
         files: '<config:lint.files>',
         tasks: 'lint qunit'
       },
+
       jshint: {
         options: {
           curly: true,
@@ -64,6 +68,11 @@ module.exports = function(grunt) {
           jQuery: true
         }
       },
+
+      // jenkins: {
+      //   serverAddress: 'http://localhost:8080'
+      // },
+
       uglify: {}
     });
 
