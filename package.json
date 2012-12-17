@@ -1,7 +1,7 @@
 {
   "name": "freezing-octo-hipster",
   "version": "0.0.0",
-  "description": "freezing-octo-hipster\r =====================",
+  "description": "requirejs test setup environment",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
