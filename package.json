@@ -11,7 +11,8 @@
     "url": "https://github.com/jwalsh/freezing-octo-hipster.git"
   },
   "dependencies": {
-    "grunt-requirejs": ""
+    "grunt-requirejs": "",
+    "grunt-jenkins": ""
   },
   "author": "",
   "license": "BSD"
