@@ -1,7 +1,7 @@
 {
   "name": "freezing-octo-hipster",
   "version": "0.0.0",
-  "description": "freezing-octo-hipster\r =====================",
+  "description": "Grunt and QUnit project for Jenkins",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +11,7 @@
     "url": "https://github.com/jwalsh/freezing-octo-hipster.git"
   },
   "dependencies": {
+    "grunt": "",
     "grunt-requirejs": ""
   },
   "author": "",

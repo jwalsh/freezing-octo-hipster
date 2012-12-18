@@ -14,38 +14,44 @@ module.exports = function(grunt) {
           '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
           ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
       },
+
       requirejs: {
-        mobile: {
-          baseUrl: 'src',
+        all: {
+          baseUrl: 'lib',
           name: '../vendor/almond',
-          include: 'mobile',
-          out: 'dist/mobile-built.js',
+          include: 'freezing-octo-hipster',
+          out: 'dist/core-built.js',
           wrap: true
         }
       },
 
       lint: {
-        files: ['grunt.js', 'static/**/*.js']
+        files: ['grunt.js', 'lib/**/*.js']
       },
+
       qunit: {
         files: ['test/**/*.html']
       },
+
       concat: {
         dist: {
           src: ['<banner:meta.banner>', '<file_strip_banner:lib/<%= pkg.name %>.js>'],
           dest: 'dist/<%= pkg.name %>.js'
         }
       },
+
       min: {
         dist: {
           src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
           dest: 'dist/<%= pkg.name %>.min.js'
         }
       },
+
       watch: {
         files: '<config:lint.files>',
         tasks: 'lint qunit'
       },
+
       jshint: {
         options: {
           curly: true,
@@ -64,10 +70,12 @@ module.exports = function(grunt) {
           jQuery: true
         }
       },
+
       uglify: {}
+
     });
 
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'lint requirejs:all qunit concat min');
 
 };
