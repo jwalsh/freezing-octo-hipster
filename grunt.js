@@ -12,7 +12,8 @@ module.exports = function(grunt) {
           '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
           '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
           '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-          ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+          ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */' +
+          '\nwindow.version = "<%= pkg.version %>";\n'
       },
 
       requirejs: {
@@ -20,7 +21,7 @@ module.exports = function(grunt) {
           baseUrl: 'lib',
           name: '../vendor/almond',
           include: 'freezing-octo-hipster',
-          out: 'dist/core-built.js',
+          out: 'dist/all-built.js',
           wrap: true
         }
       },
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
 
       concat: {
         dist: {
-          src: ['<banner:meta.banner>', '<file_strip_banner:lib/<%= pkg.name %>.js>'],
+          src: ['<banner:meta.banner>', 'dist/all-built.js'],
           dest: 'dist/<%= pkg.name %>.js'
         }
       },
@@ -76,6 +77,6 @@ module.exports = function(grunt) {
     });
 
   // Default task.
-  grunt.registerTask('default', 'lint requirejs:all qunit concat min');
+  grunt.registerTask('default', 'lint requirejs:all concat min qunit');
 
 };
